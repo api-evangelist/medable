@@ -1,23 +1,71 @@
 aid: medable
 name: Medable
-description: 'Medable is a company surfaced as a portfolio company of obvious-ventures, sapphire-ventures
-  and added to the API Evangelist network as a stub for enrichment. Sector: human-health. This profile
-  is a lead awaiting the enrichment pipeline.'
+description: >-
+  Medable operates a clinical trial technology platform for decentralized and hybrid
+  trials, combining eCOA/ePRO data capture, electronic consent, televisit, and a suite
+  of agentic-AI products (Agent Studio, CRA Agent, PI Summary Review, Digital Data Flow
+  agent) for life-sciences sponsors and CROs. Its developer surface is the Cortex API —
+  a schema-driven object platform (custom objects and properties, querying, aggregation,
+  and server-side scripting) addressed over REST at api.<env>.medable.com/<org_code>/v2/,
+  with session-based and request-signature authentication, an mdctl developer CLI, and an
+  iOS/Swift SDK. Backed by Obvious Ventures and Sapphire Ventures.
 url: https://raw.githubusercontent.com/api-evangelist/medable/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - obvious-ventures
 - sapphire-ventures
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+image: https://cdn.prod.website-files.com/63da4ae4359b4b2bffd2a3b6/64677a1c8fad4c624f57af3c_medable-open-graph-image.png
 tags:
 - Company
 - Human Health
-apis: []
+- Clinical Trials
+- Life Sciences
+- eCOA
+- Healthcare
+- Decentralized Clinical Trials
+- Backend as a Service
+- Agentic AI
+apis:
+- name: Medable Cortex API
+  description: >-
+    Schema-driven object API for building clinical applications on Medable: custom objects
+    and typed properties, querying and aggregation, server-side scripting, accounts,
+    connections, notifications, and televisit rooms. Org-scoped REST at
+    api.<env>.medable.com/<org_code>/v2/.
+  humanURL: https://docs.medable.com/cortex-api/cortex-api
+  baseURL: https://api.medable.com
+  tags:
+  - Clinical Trials
+  - Backend as a Service
+  properties:
+  - type: Documentation
+    url: https://docs.medable.com
+  - type: APIReference
+    url: https://docs.medable.com/cortex-api/cortex-api
+  - type: GettingStarted
+    url: https://docs.medable.com/getting-started/cortex-user-guide/first-api-request
+  - type: Authentication
+    url: authentication/medable-authentication.yml
+  - type: LLMsTxt
+    url: llms/medable-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -26,3 +74,60 @@ maintainers:
 common:
 - type: Website
   url: https://medable.com
+- type: DeveloperPortal
+  url: https://docs.medable.com
+- type: Documentation
+  url: https://docs.medable.com
+- type: APIReference
+  url: https://docs.medable.com/cortex-api/cortex-api
+- type: GettingStarted
+  url: https://docs.medable.com/getting-started/cortex-user-guide/first-api-request
+- type: Support
+  url: https://www.medable.com/company/support
+- type: Blog
+  url: https://www.medable.com/resources/knowledge-center
+- type: GitHubOrganization
+  url: https://github.com/Medable
+- type: SignUp
+  url: https://www.medable.com/find-your-login
+- type: TermsOfService
+  url: https://www.medable.com/legal/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.medable.com/legal/privacy-center
+- type: StatusPage
+  url: https://status.medable.com
+- type: Authentication
+  url: authentication/medable-authentication.yml
+- type: Conventions
+  url: conventions/medable-conventions.yml
+- type: ErrorCatalog
+  url: errors/medable-error-codes.yml
+- type: Lifecycle
+  url: lifecycle/medable-lifecycle.yml
+- type: ChangeLog
+  url: changelog/medable-changelog.yml
+- type: Conformance
+  url: conformance/medable-conformance.yml
+- type: Packages
+  url: packages/medable-packages.yml
+- type: SDKs
+  url: packages/medable-packages.yml
+- type: CLI
+  url: cli/medable-cli.yml
+- type: MCPServer
+  url: mcp/medable-mcp.yml
+- type: DataModel
+  url: data-model/medable-data-model.yml
+- type: Sandbox
+  url: sandbox/medable-sandbox.yml
+- type: WellKnown
+  url: well-known/medable-well-known.yml
+- type: LLMsTxt
+  url: llms/medable-llms.txt
+- type: DomainSecurity
+  url: security/medable-domain-security.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 14
+  pass: local-v1
