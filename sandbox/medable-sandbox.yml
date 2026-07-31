@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.medable.com/getting-started/cortex-user-guide/first-api-request
+docs: https://docs.medable.com/getting-started/cortex-user-guide/first-api-request
+description: >-
+  Cortex separates environments by hostname and by org. A development org is used for
+  testing, addressed at api.dev.medable.com, with a separate staging environment; the
+  same org exists per environment. There is no shared public sandbox tenant — developers
+  create their own dev org and App to obtain an API key.
+environments:
+- name: development
+  base_url: https://api.dev.medable.com/{org_code}/v2/
+- name: staging
+  base_url: https://api.staging.medable.com/{org_code}/v2/
+- name: production
+  base_url: https://api.medable.com/{org_code}/v2/
+test_setup:
+  steps:
+  - Create an org and log in as administrator.
+  - Settings > Apps > New App to generate an API key.
+  - Optionally enable Sessions and/or CSRF protection on the App.
+  published_example:
+    org_code: newhealthco
+    note: >-
+      Example org code and API key value (mwidxhb8ShcqmV1B9iOYJh) are illustrative
+      values published in the Medable getting-started docs, not live credentials.
+release_workspaces:
+  note: >-
+    Release notes deploy to staging workspaces before production workspaces on separate
+    dated schedules (see changelog/medable-changelog.yml).

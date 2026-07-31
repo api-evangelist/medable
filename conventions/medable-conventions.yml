@@ -1,0 +1,62 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.medable.com/cortex-api/cortex-api.md
+docs: https://docs.medable.com/cortex-api/
+description: >-
+  Cross-cutting request/response semantics for the Medable Cortex API. Cortex is a
+  schema-driven object platform (MongoDB-style objects, querying and aggregation)
+  addressed over REST at api.<env>.medable.com/<org_code>/v2/.
+authentication:
+  styles:
+  - session (cookie)
+  - signature (Medable-Client-* headers)
+  ref: authentication/medable-authentication.yml
+base_url:
+  pattern: https://api.{env}.medable.com/{org_code}/v2/{api_resource}
+  production: https://api.medable.com/{org_code}/v2/
+  environments:
+  - dev: https://api.dev.medable.com/{org_code}/v2/
+  - staging: https://api.staging.medable.com/{org_code}/v2/
+  notes: >-
+    Requests are scoped to an org by org_code path segment. Resource names are plural
+    (e.g. account object -> /accounts). Version is carried in the URI path (v2).
+versioning:
+  scheme: uri-path
+  current: v2
+  api_release: 2.28.4
+  ref: lifecycle/medable-lifecycle.yml
+pagination:
+  style: skip-limit
+  order: where, sort, skip, limit
+  params:
+  - where: JSON object of operators/expressions to filter (indexed properties).
+  - sort: JSON object of property -> 1/-1.
+  - skip: integer number of results to skip.
+  - limit: integer number of results to return.
+  response_fields:
+  - object: "list"
+  - data: array of result documents
+  - hasMore: boolean, true when more results are available
+  docs: https://docs.medable.com/cortex-api/querying
+query:
+  operators_docs: https://docs.medable.com/cortex-api/querying/query-operators
+  property_selection: "paths[] / include / expand query args"
+  aggregation_docs: https://docs.medable.com/cortex-api/aggregating
+error_envelope:
+  object: fault
+  shape: >-
+    JSON document with object=fault carrying code, errCode, status, message and
+    (for writes) path. Validation faults carry child faults in a faults[] array.
+    Two faults (cortex.success.newLocation, cortex.accepted.mediaNotReady) return
+    2XX and must be handled as faults.
+  ref: errors/medable-error-codes.yml
+request_tracing:
+  server_time_header: Medable-Server-Time
+idempotency:
+  supported: false
+  notes: >-
+    No documented idempotency-key mechanism. Signature auth uses a per-request nonce
+    (Medable-Client-Nonce) for replay protection, which is not an idempotency key.
+csrf:
+  header: medable-csrf-token
+  notes: Required on authenticated requests when CSRF protection is enabled on the App.

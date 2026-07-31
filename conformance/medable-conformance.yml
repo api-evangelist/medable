@@ -1,0 +1,35 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/none — derived from docs.medable.com Cortex API reference
+description: >-
+  Cross-cutting technical standard conformance for the Medable Cortex API, derived
+  from the published documentation. Cortex is a proprietary schema-driven object API;
+  it does not implement OAuth2/OIDC or RFC 9457 problem+json (it uses a custom fault
+  envelope). Compliance certifications (HIPAA/SOC 2/etc.) are not published on a public
+  trust page and are therefore not asserted here.
+standards:
+- id: oauth2
+  conforms: false
+  evidence: Authentication is session-based and signature-based; no OAuth2 scheme documented.
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a custom object=fault envelope, not application/problem+json.
+- id: fhir
+  conforms: false
+- id: hl7
+  conforms: false
+  evidence: HL7 messaging is documented as an integration use case, not an API conformance claim.
+- id: scim
+  conforms: false
+- id: odata
+  conforms: false
+- id: json-api
+  conforms: false
+- id: pagination
+  conforms: true
+  evidence: skip/limit paging with hasMore response field documented in Querying.
+- id: idempotency
+  conforms: false
+  evidence: No idempotency-key mechanism documented.

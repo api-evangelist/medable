@@ -1,0 +1,1436 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.medable.com/cortex-api/faults/fault-reference.md
+format: medable-fault
+description: Cortex API fault (error) registry. Faults are JSON documents with object=fault. Two faults (cortex.success.newLocation, cortex.accepted.mediaNotReady) return 2XX and must be handled as faults.
+  Validation faults (cortex.invalidArgument.validation) carry child faults in a faults[] array.
+envelope:
+  object: fault
+  fields:
+  - object
+  - name
+  - code
+  - errCode
+  - status
+  - message
+  - path
+  - reason
+  - faults
+  example:
+    object: fault
+    name: error
+    code: kInvalidObject
+    errCode: cortex.invalidArgument.object
+    status: 400
+    message: Invalid or unknown object.
+    path: missing
+status_code_distribution:
+  200: 1
+  202: 1
+  400: 94
+  403: 71
+  404: 38
+  408: 6
+  409: 12
+  410: 5
+  413: 4
+  415: 1
+  428: 1
+  429: 5
+  500: 20
+  501: 13
+areas:
+  db: 66
+  validation: 36
+  error: 23
+  fault: 17
+  auth: 11
+  deployment: 11
+  connections: 10
+  files: 9
+  apps: 8
+  location: 8
+  account: 7
+  sessions: 7
+  queue: 7
+  patch: 7
+  notifications: 6
+  api: 5
+  support: 5
+  jwt: 4
+  env: 4
+  client: 3
+  registration: 2
+  scripts: 2
+  sms: 2
+  locations: 2
+  parser: 2
+  developer: 2
+  accounts: 1
+  jobs: 1
+  media: 1
+  admin: 1
+  policy: 1
+  notifcations: 1
+count: 272
+faults:
+- errCode: cortex.accepted.mediaNotReady
+  code: kMediaNotReady
+  area: files
+  status: 202
+  reason: The resource has been created but is not ready for streaming.
+- errCode: cortex.accessDenied.accountActivationRequired
+  code: kAccountActivationRequired
+  area: registration
+  status: 403
+  reason: Account must be activated to login.
+- errCode: cortex.accessDenied.accountLocked
+  code: kAccountLocked
+  area: auth
+  status: 403
+  reason: Account access has been disabled.
+- errCode: cortex.accessDenied.accountNotActivated
+  code: kAccountNotActivated
+  area: account
+  status: 403
+  reason: Account is not yet activated.
+- errCode: cortex.accessDenied.app
+  code: kAccessDenied
+  area: apps
+  status: 403
+  reason: App client access denied.
+- errCode: cortex.accessDenied.appDisabled
+  code: kAccessDenied
+  area: apps
+  status: 403
+  reason: App disabled.
+- errCode: cortex.accessDenied.appReadOnly
+  code: kAccessDenied
+  area: apps
+  status: 403
+  reason: App is read only.
+- errCode: cortex.accessDenied.appSuspended
+  code: kAccessDenied
+  area: apps
+  status: 403
+  reason: App suspended.
+- errCode: cortex.accessDenied.autoConnectionRequiresAccess
+  code: kAccessDenied
+  area: account
+  status: 403
+  reason: An automatic connection cannot be made unless the caller has the required access level to the connection target.
+- errCode: cortex.accessDenied.badPassword
+  code: kInvalidCredentials
+  area: auth
+  status: 403
+  reason: Invalid password.
+- errCode: cortex.accessDenied.connection
+  code: kAccessDenied
+  area: connections
+  status: 403
+  reason: Connection access denied.
+- errCode: cortex.accessDenied.connectionRequiresVerification
+  code: kAccountNotVerified
+  area: account
+  status: 403
+  reason: Account must be verified before connections can be made.
+- errCode: cortex.accessDenied.connectionsDisabled
+  code: kAccessDenied
+  area: connections
+  status: 403
+  reason: Connections are disabled for object.
+- errCode: cortex.accessDenied.csrfTokenMismatch
+  code: kCSRFTokenMismatch
+  area: sessions
+  status: 403
+  reason: CSRF token mismatch.
+- errCode: cortex.accessDenied.deploymentEnv
+  code: kAccessDenied
+  area: deployment
+  status: 403
+  reason: This organization environment is not configured for deployments.
+- errCode: cortex.accessDenied.deploymentInProgress
+  code: kDeployment
+  area: deployment
+  status: 403
+  reason: A deployment is in progress.
+- errCode: cortex.accessDenied.deploymentTarget
+  code: kAccessDenied
+  area: deployment
+  status: 403
+  reason: Invalid deployment target.
+- errCode: cortex.accessDenied.duplicatePassword
+  code: kDuplicate
+  area: account
+  status: 403
+  reason: Your new password must be different than the old one.
+- errCode: cortex.accessDenied.feature
+  code: kAccessDenied
+  area: api
+  status: 403
+  reason: Feature not available.
+- errCode: cortex.accessDenied.inUse
+  code: kAccessDenied
+  area: fault
+  status: 403
+  reason: The resource is in use and cannot be removed.
+- errCode: cortex.accessDenied.inaccessibleProperty
+  code: kAccessDenied
+  area: db
+  status: 403
+  reason: Cannot perform operation on non-accessible property.
+- errCode: cortex.accessDenied.instanceCreate
+  code: kAccessDenied
+  area: db
+  status: 403
+  reason: Create access denied.
+- errCode: cortex.accessDenied.instanceDelete
+  code: kAccessDenied
+  area: db
+  status: 403
+  reason: Delete access denied.
+- errCode: cortex.accessDenied.instanceRead
+  code: kAccessDenied
+  area: db
+  status: 403
+  reason: Read access denied.
+- errCode: cortex.accessDenied.instanceUpdate
+  code: kAccessDenied
+  area: db
+  status: 403
+  reason: Update access denied.
+- errCode: cortex.accessDenied.invalidCredentials
+  code: kInvalidCredentials
+  area: auth
+  status: 403
+  reason: Invalid email/password combination.
+- errCode: cortex.accessDenied.invalidDeploymentCredentials
+  code: kInvalidArgument
+  area: deployment
+  status: 403
+  reason: Invalid deployment credentials.
+- errCode: cortex.accessDenied.invalidJwt
+  code: kInvalidCredentials
+  area: jwt
+  status: 403
+  reason: Invalid access token.
+- errCode: cortex.accessDenied.invalidJwtApp
+  code: kInvalidCredentials
+  area: jwt
+  status: 403
+  reason: Invalid access token app.
+- errCode: cortex.accessDenied.invalidRequestSignature
+  code: kInvalidRequestSignature
+  area: auth
+  status: 403
+  reason: Invalid request signature.
+- errCode: cortex.accessDenied.locationAccessRevoked
+  code: kLocationAccessRevoked
+  area: location
+  status: 403
+  reason: Access from this location has been revoked.
+- errCode: cortex.accessDenied.locationClientMismatch
+  code: kLocationClientMismatch
+  area: location
+  status: 403
+  reason: Location/Access client mismatch.
+- errCode: cortex.accessDenied.loggedInElsewhere
+  code: kLoggedInElsewhere
+  area: sessions
+  status: 403
+  reason: Logged in elsewhere.
+- errCode: cortex.accessDenied.maintenance
+  code: kMaintenance
+  area: env
+  status: 403
+  reason: The API is currently undergoing maintenance.
+- errCode: cortex.accessDenied.maxAccounts
+  code: kMaxAllowed
+  area: accounts
+  status: 403
+  reason: The user account quota has been exceeded.
+- errCode: cortex.accessDenied.maxJobsPerDay
+  code: kMaxAllowed
+  area: jobs
+  status: 403
+  reason: Max jobs per day quota exceeded.
+- errCode: cortex.accessDenied.maxJwtPerSubject
+  code: kAccessDenied
+  area: jwt
+  status: 403
+  reason: Maximum number of tokens reached for this subject.
+- errCode: cortex.accessDenied.maxRooms
+  code: kAccessDenied
+  area: fault
+  status: 403
+  reason: Max concurrent rooms.
+- errCode: cortex.accessDenied.noCredentialsSupplied
+  code: kNoCredentialsSupplied
+  area: auth
+  status: 403
+  reason: No access credentials were supplied.
+- errCode: cortex.accessDenied.notDeletable
+  code: kNotDeletable
+  area: error
+  status: 403
+  reason: Resource cannot be deleted.
+- errCode: cortex.accessDenied.notLoggedIn
+  code: kNotLoggedIn
+  area: sessions
+  status: 403
+  reason: You must be logged in to access this resource.
+- errCode: cortex.accessDenied.notPullable
+  code: kNotPullable
+  area: error
+  status: 403
+  reason: Removal from collection not supported.
+- errCode: cortex.accessDenied.notWritable
+  code: kNotWritable
+  area: error
+  status: 403
+  reason: Resource/Property is not writable.
+- errCode: cortex.accessDenied.passwordExpired
+  code: kPasswordExpired
+  area: auth
+  status: 403
+  reason: Your password has expired.
+- errCode: cortex.accessDenied.policy
+  code: kAccessDenied
+  area: auth
+  status: 403
+  reason: Access denied by policy.
+- errCode: cortex.accessDenied.principal
+  code: kAccessDenied
+  area: auth
+  status: 403
+  reason: Access denied to principal.
+- errCode: cortex.accessDenied.privateFacet
+  code: kAccessDenied
+  area: media
+  status: 403
+  reason: Access to private facet is only allowed by the creator.
+- errCode: cortex.accessDenied.propertyDelete
+  code: kAccessDenied
+  area: db
+  status: 403
+  reason: Property delete access denied.
+- errCode: cortex.accessDenied.propertyPull
+  code: kAccessDenied
+  area: db
+  status: 403
+  reason: Property pull access denied.
+- errCode: cortex.accessDenied.propertyRead
+  code: kAccessDenied
+  area: fault
+  status: 403
+  reason: Property read access denied.
+- errCode: cortex.accessDenied.propertyUpdate
+  code: kAccessDenied
+  area: db
+  status: 403
+  reason: Property update access denied.
+- errCode: cortex.accessDenied.providerRegistrationDisabled
+  code: kProviderRegistrationDisabled
+  area: account
+  status: 403
+  reason: Provider registration is not enabled.
+- errCode: cortex.accessDenied.referencedContext
+  code: kAccessDenied
+  area: db
+  status: 403
+  reason: Insufficient access to referenced context.
+- errCode: cortex.accessDenied.registrationInvitationRequired
+  code: kRegistrationInvitationRequired
+  area: registration
+  status: 403
+  reason: Registration requires a valid invitation.
+- errCode: cortex.accessDenied.role
+  code: kAccessDenied
+  area: apps
+  status: 403
+  reason: Insufficient role access.
+- errCode: cortex.accessDenied.room
+  code: kAccessDenied
+  area: fault
+  status: 403
+  reason: Banned from room.
+- errCode: cortex.accessDenied.roomsDisabled
+  code: kAccessDenied
+  area: fault
+  status: 403
+  reason: Rooms disabled.
+- errCode: cortex.accessDenied.route
+  code: kAccessDenied
+  area: fault
+  status: 403
+  reason: Route access denied.
+- errCode: cortex.accessDenied.scope
+  code: kAccessDenied
+  area: support
+  status: 403
+  reason: Missing a required JWT auth scope.
+- errCode: cortex.accessDenied.scoped
+  code: kAccessDenied
+  area: support
+  status: 403
+  reason: Call by JWT scoped principal not permitted.
+- errCode: cortex.accessDenied.scriptsDisabled
+  code: kAccessDenied
+  area: scripts
+  status: 403
+  reason: Scripts are disabled in this environment.
+- errCode: cortex.accessDenied.selfRegistrationDisabled
+  code: kSelfRegistrationDisabled
+  area: account
+  status: 403
+  reason: Self registration is not enabled.
+- errCode: cortex.accessDenied.sessionExpired
+  code: kSessionExpired
+  area: sessions
+  status: 403
+  reason: Your session has expired.
+- errCode: cortex.accessDenied.sessionOrgMismatch
+  code: kSessionOrgMismatch
+  area: sessions
+  status: 403
+  reason: The application and session Orgs do not match.
+- errCode: cortex.accessDenied.shareAccess
+  code: kAccessDenied
+  area: fault
+  status: 403
+  reason: Share access is required.
+- errCode: cortex.accessDenied.supportDisabled
+  code: kAccessDenied
+  area: support
+  status: 403
+  reason: Support login is disabled.
+- errCode: cortex.accessDenied.supportPinned
+  code: kAccessDenied
+  area: support
+  status: 403
+  reason: Support login is pinned to another account.
+- errCode: cortex.accessDenied.supportReasonRequired
+  code: kAccessDenied
+  area: support
+  status: 403
+  reason: Support login requires a reason for the login.
+- errCode: cortex.accessDenied.unspecified
+  code: kAccessDenied
+  area: error
+  status: 403
+  reason: Access denied.
+- errCode: cortex.accessDenied.unverifiedLocation
+  code: kUnverifiedLocation
+  area: location
+  status: 403
+  reason: Access by this location is pending account holder verification.
+- errCode: cortex.accessDenied.view
+  code: kAccessDenied
+  area: db
+  status: 403
+  reason: View access denied.
+- errCode: cortex.accessDenied.writeOnce
+  code: kWriteOnce
+  area: error
+  status: 403
+  reason: Property cannot be overwritten.
+- errCode: cortex.conflict.accountAlreadyActivated
+  code: kExists
+  area: fault
+  status: 409
+  reason: Account already activated.
+- errCode: cortex.conflict.accountAlreadyVerified
+  code: kExists
+  area: fault
+  status: 409
+  reason: Account already verified.
+- errCode: cortex.conflict.activationAlreadySent
+  code: kActivationAlreadySent
+  area: admin
+  status: 409
+  reason: An account activation email has already been sent to this address.
+- errCode: cortex.conflict.connectionExists
+  code: kExists
+  area: connections
+  status: 409
+  reason: Connection already exists.
+- errCode: cortex.conflict.duplicateEmail
+  code: kExists
+  area: account
+  status: 409
+  reason: An account with this email address already exists.
+- errCode: cortex.conflict.duplicateKey
+  code: kDuplicateKey
+  area: db
+  status: 409
+  reason: Duplicate value for unique index.
+- errCode: cortex.conflict.exists
+  code: kExists
+  area: error
+  status: 409
+  reason: Resource already exists.
+- errCode: cortex.conflict.sequencing
+  code: kSequencingError
+  area: db
+  status: 409
+  reason: Sequencing error. Device contention on a document could not be resolved.
+- errCode: cortex.conflict.staleDocument
+  code: kStaleDocument
+  area: db
+  status: 409
+  reason: Stale document.
+- errCode: cortex.conflict.uniqueInArray
+  code: kDuplicateKey
+  area: db
+  status: 409
+  reason: Duplicate value found in the collection.
+- errCode: cortex.conflict.unspecified
+  code: kConflict
+  area: db
+  status: 409
+  reason: Resource conflict.
+- errCode: cortex.conflict.versionOutOfDate
+  code: kConflict
+  area: db
+  status: 409
+  reason: The version is out of date.
+- errCode: cortex.error.aborted
+  code: kCancelled
+  area: error
+  status: 500
+  reason: Operation aborted.
+- errCode: cortex.error.couldNotReadCookies
+  code: kCouldNotReadCookies
+  area: location
+  status: 500
+  reason: Could not read cookies.
+- errCode: cortex.error.db
+  code: kError
+  area: db
+  status: 500
+  reason: A database error occured.
+- errCode: cortex.error.deploymentRunMismatch
+  code: kError
+  area: deployment
+  status: 500
+  reason: Deployment last-run identifier does not match.
+- errCode: cortex.error.facet
+  code: kScriptError
+  area: files
+  status: 500
+  reason: File facet has errors.
+- errCode: cortex.error.listWriteThrough
+  code: kError
+  area: db
+  status: 500
+  reason: List write-through had errors.
+- errCode: cortex.error.messageQueueFailed
+  code: kMessageQueueFailed
+  area: queue
+  status: 500
+  reason: Failed to queue message(s).
+- errCode: cortex.error.netInvalidResponseStatus
+  code: kInvalidResponseStatus
+  area: client
+  status: 500
+  reason: Result received with invalid http response code.
+- errCode: cortex.error.netMissingResponse
+  code: kMissingResponse
+  area: client
+  status: 500
+  reason: Missing response. Expected a fault or result.
+- errCode: cortex.error.netMissingResult
+  code: kMissingResult
+  area: client
+  status: 500
+  reason: Missing result.
+- errCode: cortex.error.queueCantLockMessage
+  code: kQueueCantLockMessage
+  area: queue
+  status: 500
+  reason: Could not lock for remove/update.
+- errCode: cortex.error.queueProcessError
+  code: kQueueProcessError
+  area: queue
+  status: 500
+  reason: Process error.
+- errCode: cortex.error.queueTaskProcessor
+  code: kQueueTaskProcessor
+  area: queue
+  status: 500
+  reason: Task had errors.
+- errCode: cortex.error.renderTemplate
+  code: kError
+  area: notifications
+  status: 500
+  reason: One or more template parts failed to render.
+- errCode: cortex.error.sessionInitFailure
+  code: kError
+  area: sessions
+  status: 500
+  reason: Session failed to initialize.
+- errCode: cortex.error.sessionRequired
+  code: kSessionRequired
+  area: sessions
+  status: 500
+  reason: A session is required.
+- errCode: cortex.error.smsNotification
+  code: kSmsError
+  area: sms
+  status: 500
+  reason: SMS Error.
+- errCode: cortex.error.triggerCancelled
+  code: kError
+  area: scripts
+  status: 500
+  reason: Operation was cancelled by trigger.
+- errCode: cortex.error.unspecified
+  code: kError
+  area: error
+  status: 500
+  reason: Error.
+- errCode: cortex.error.virusDetected
+  code: kVirusFound
+  area: files
+  status: 500
+  reason: A virus was detected.
+- errCode: cortex.expired.app
+  code: kExpired
+  area: apps
+  status: 410
+  reason: App key expired.
+- errCode: cortex.expired.deployment
+  code: kExpired
+  area: deployment
+  status: 410
+  reason: Expired deployment token.
+- errCode: cortex.expired.jwt
+  code: kTokenExpired
+  area: jwt
+  status: 410
+  reason: Expired access token.
+- errCode: cortex.expired.locationToken
+  code: kExpired
+  area: locations
+  status: 410
+  reason: Expired location verification token.
+- errCode: cortex.expired.unspecified
+  code: kExpired
+  area: error
+  status: 410
+  reason: Resource expired.
+- errCode: cortex.invalidArgument.JSONSchema
+  code: kInvalidJSONSchema
+  area: validation
+  status: 400
+  reason: Please enter a valid JSON schema.
+- errCode: cortex.invalidArgument.JSONSchemaValidation
+  code: kInvalidArgument
+  area: validation
+  status: 400
+  reason: JSON schema validation failed.
+- errCode: cortex.invalidArgument.allowLevel
+  code: kInvalidArgument
+  area: validation
+  status: 400
+  reason: Invalid acl allow level.
+- errCode: cortex.invalidArgument.ambiguousDeploymentMapping
+  code: kInvalidArgument
+  area: deployment
+  status: 400
+  reason: Ambiguous mapping must be forced.
+- errCode: cortex.invalidArgument.authScope
+  code: kAuthScope
+  area: auth
+  status: 400
+  reason: Invalid authentication scope.
+- errCode: cortex.invalidArgument.autoConnectionRequiresId
+  code: kInvalidArgument
+  area: connections
+  status: 400
+  reason: Automatic connections must target an account identifier.
+- errCode: cortex.invalidArgument.autoCreateCircularReference
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: A circular reference exists in the autoCreate configuration.
+- errCode: cortex.invalidArgument.badDbValue
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: Invalid query expression and/or value.
+- errCode: cortex.invalidArgument.castError
+  code: kCastError
+  area: validation
+  status: 400
+  reason: Cast error.
+- errCode: cortex.invalidArgument.certificateOrKeyFormat
+  code: kInvalidFormat
+  area: validation
+  status: 400
+  reason: The certificate/key format is invalid.
+- errCode: cortex.invalidArgument.circularReference
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: Value contains a circular reference.
+- errCode: cortex.invalidArgument.connectionTarget
+  code: kInvalidArgument
+  area: connections
+  status: 400
+  reason: Invalid connection target.
+- errCode: cortex.invalidArgument.connectionToken
+  code: kInvalidArgument
+  area: connections
+  status: 400
+  reason: Invalid connection token.
+- errCode: cortex.invalidArgument.creatableOnly
+  code: kCreatableOnly
+  area: validation
+  status: 400
+  reason: Property is only writable on creation.
+- errCode: cortex.invalidArgument.creationDisabled
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: Instance creation is currently disabled.
+- errCode: cortex.invalidArgument.cursorOrArrayExpected
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: Expecting a cursor or array.
+- errCode: cortex.invalidArgument.customName
+  code: kInvalidArgument
+  area: validation
+  status: 400
+  reason: Invalid custom/namespaced value.
+- errCode: cortex.invalidArgument.date
+  code: kInvalidArgument
+  area: validation
+  status: 400
+  reason: Invalid date.
+- errCode: cortex.invalidArgument.dateOfBirth
+  code: kInvalidDateOfBirth
+  area: validation
+  status: 400
+  reason: Invalid date of birth.
+- errCode: cortex.invalidArgument.deletionDisabled
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: Instance deletion is currently disabled.
+- errCode: cortex.invalidArgument.dollarPrefixedDbKey
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: Dollar ($) prefixed fields are not valid for storage.
+- errCode: cortex.invalidArgument.dottedDbFieldName
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: Dotted field names are not valid for storage.
+- errCode: cortex.invalidArgument.emailAddress
+  code: kInvalidEmailAddress
+  area: validation
+  status: 400
+  reason: Invalid email address.
+- errCode: cortex.invalidArgument.emailFormat
+  code: kInvalidEmailFormat
+  area: validation
+  status: 400
+  reason: Invalid email address format.
+- errCode: cortex.invalidArgument.emptyOperationsPayload
+  code: kInvalidArgument
+  area: patch
+  status: 400
+  reason: Empty operations payload. Nothing to do.
+- errCode: cortex.invalidArgument.enumValue
+  code: kEnumValue
+  area: validation
+  status: 400
+  reason: Please enter a value from the list.
+- errCode: cortex.invalidArgument.envDisabled
+  code: kOrgDisabled
+  area: env
+  status: 400
+  reason: Org is not active.
+- errCode: cortex.invalidArgument.fingerprintMismatch
+  code: kFingerprintMismatch
+  area: location
+  status: 400
+  reason: Fingerprint does not match session.
+- errCode: cortex.invalidArgument.iPv4AddrOrCidr
+  code: kInvalidIPv4AddrOrCidr
+  area: validation
+  status: 400
+  reason: Enter a valid IPv4 address or IPv4 CIDR range.
+- errCode: cortex.invalidArgument.illegalExpansion
+  code: kIllegalExpansion
+  area: error
+  status: 400
+  reason: This property cannot be expanded.
+- errCode: cortex.invalidArgument.inactive
+  code: kInvalidArgument
+  area: error
+  status: 400
+  reason: Resource is inactive.
+- errCode: cortex.invalidArgument.inactiveDeploymentTarget
+  code: kInvalidArgument
+  area: deployment
+  status: 400
+  reason: Deployment target is inactive.
+- errCode: cortex.invalidArgument.instanceRetyping
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: Object instances cannot be re-typed.
+- errCode: cortex.invalidArgument.instanceTypeMismatch
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: Invalid or mismatched object type.
+- errCode: cortex.invalidArgument.invalidApiVersion
+  code: kInvalidApiVersion
+  area: error
+  status: 400
+  reason: Invalid API Version.
+- errCode: cortex.invalidArgument.invalidCoordinate
+  code: kInvalidCoordinate
+  area: validation
+  status: 400
+  reason: Must be a valid 2 element coordinate array.
+- errCode: cortex.invalidArgument.invalidDeploymentId
+  code: kInvalidArgument
+  area: deployment
+  status: 400
+  reason: Invalid deployment identifier.
+- errCode: cortex.invalidArgument.invalidJSON
+  code: kInvalidJSON
+  area: validation
+  status: 400
+  reason: Please enter valid JSON.
+- errCode: cortex.invalidArgument.invalidObjectId
+  code: kInvalidArgument
+  area: error
+  status: 400
+  reason: Invalid object identifier.
+- errCode: cortex.invalidArgument.invalidString
+  code: kInvalidString
+  area: validation
+  status: 400
+  reason: Invalid string.
+- errCode: cortex.invalidArgument.locale
+  code: kInvalidArgument
+  area: validation
+  status: 400
+  reason: Invalid locale
+- errCode: cortex.invalidArgument.locationAlreadyVerified
+  code: kLocationAlreadyVerified
+  area: location
+  status: 400
+  reason: Location already verified.
+- errCode: cortex.invalidArgument.locationFingerprint
+  code: kInvalidFingerprint
+  area: location
+  status: 400
+  reason: Invalid location fingerprint.
+- errCode: cortex.invalidArgument.locationToken
+  code: kInvalidArgument
+  area: locations
+  status: 400
+  reason: Invalid location verification token.
+- errCode: cortex.invalidArgument.matchExpected
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: Expected a match document or identifier.
+- errCode: cortex.invalidArgument.maxAllowed
+  code: kMaxAllowed
+  area: validation
+  status: 400
+  reason: Too many items of this type in the collection.
+- errCode: cortex.invalidArgument.maxInsertsPerCall
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: The maximum number of inserted documents per call has been reached.
+- errCode: cortex.invalidArgument.maxItems
+  code: kMaxItems
+  area: validation
+  status: 400
+  reason: Too many items in the collection/array.
+- errCode: cortex.invalidArgument.maxLength
+  code: kInvalidArgument
+  area: validation
+  status: 400
+  reason: Max length exceeded.
+- errCode: cortex.invalidArgument.maxScriptLength
+  code: kInvalidArgument
+  area: validation
+  status: 400
+  reason: Max script length exceeded.
+- errCode: cortex.invalidArgument.minItems
+  code: kMinItems
+  area: validation
+  status: 400
+  reason: Not enough items in the collection/array.
+- errCode: cortex.invalidArgument.minRequired
+  code: kMinRequired
+  area: validation
+  status: 400
+  reason: Not enough items of this type in the collection.
+- errCode: cortex.invalidArgument.mismatchedContentType
+  code: kMismatchedMediaContentType
+  area: files
+  status: 400
+  reason: Uploaded file content type must match the source.
+- errCode: cortex.invalidArgument.missingEnvCode
+  code: kInvalidArgument
+  area: env
+  status: 400
+  reason: Invalid or missing organization environment code.
+- errCode: cortex.invalidArgument.missingNotificationPayload
+  code: kInvalidArgument
+  area: notifications
+  status: 400
+  reason: Missing notification worker payload.
+- errCode: cortex.invalidArgument.missingTemplateOrMessage
+  code: kInvalidArgument
+  area: notifications
+  status: 400
+  reason: Missing notification worker payload template or message.
+- errCode: cortex.invalidArgument.missingValidatorDefinition
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: This validator has no definition.
+- errCode: cortex.invalidArgument.noConnectionApp
+  code: kInvalidArgument
+  area: connections
+  status: 400
+  reason: Connections must be created within the context of an application.
+- errCode: cortex.invalidArgument.noConnectionTargets
+  code: kInvalidArgument
+  area: connections
+  status: 400
+  reason: No connection targets were specified.
+- errCode: cortex.invalidArgument.notificationTemplateVariable
+  code: kInvalidArgument
+  area: notifications
+  status: 400
+  reason: One or more template variables are missing from the notification worker payload.
+- errCode: cortex.invalidArgument.npi
+  code: kInvalidNPI
+  area: validation
+  status: 400
+  reason: Invalid NPI.
+- errCode: cortex.invalidArgument.nullInstanceType
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: Object type cannot be written as null. It must equal one of the named types.
+- errCode: cortex.invalidArgument.numberExpected
+  code: kNumberExpected
+  area: validation
+  status: 400
+  reason: Number expected.
+- errCode: cortex.invalidArgument.object
+  code: kInvalidObject
+  area: error
+  status: 400
+  reason: Invalid or unknown object.
+- errCode: cortex.invalidArgument.objectExpectedForPatchOperation
+  code: kInvalidArgument
+  area: patch
+  status: 400
+  reason: Patch entry must be an object.
+- errCode: cortex.invalidArgument.objectExpectedForPatchValue
+  code: kInvalidArgument
+  area: patch
+  status: 400
+  reason: Patch operation value must be an object.
+- errCode: cortex.invalidArgument.operationBulkDepthExceeded
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: Max bulk operation depth exceeded.
+- errCode: cortex.invalidArgument.passwordStrength
+  code: kInvalidArgument
+  area: validation
+  status: 400
+  reason: The chosen password does not meet the minimum password strength requirement.
+- errCode: cortex.invalidArgument.pathAndValueExpectedForPullOperation
+  code: kInvalidArgument
+  area: patch
+  status: 400
+  reason: Pull requires a path and value.
+- errCode: cortex.invalidArgument.phoneNumberFormat
+  code: kInvalidPhoneNumberFormat
+  area: validation
+  status: 400
+  reason: Invalid phone number format.
+- errCode: cortex.invalidArgument.primitiveExpected
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: Primitive value expected.
+- errCode: cortex.invalidArgument.primitiveExpectedforPatchRemoveValue
+  code: kInvalidArgument
+  area: patch
+  status: 400
+  reason: Patch remove operation value must be a primitive.
+- errCode: cortex.invalidArgument.query
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: Invalid query arguments.
+- errCode: cortex.invalidArgument.requireConnectionAccept
+  code: kInvalidArgument
+  area: connections
+  status: 400
+  reason: Connections cannot be auto-created for this object.
+- errCode: cortex.invalidArgument.required
+  code: kRequired
+  area: validation
+  status: 400
+  reason: Please enter a value.
+- errCode: cortex.invalidArgument.script
+  code: kInvalidArgument
+  area: validation
+  status: 400
+  reason: Invalid script.
+- errCode: cortex.invalidArgument.scriptCompilation
+  code: kScriptCompilationError
+  area: validation
+  status: 400
+  reason: Script compilation error.
+- errCode: cortex.invalidArgument.stageJSONFormat
+  code: kInvalidArgument
+  area: parser
+  status: 400
+  reason: Invalid JSON format.
+- errCode: cortex.invalidArgument.stageObjectExpected
+  code: kInvalidArgument
+  area: parser
+  status: 400
+  reason: Object expected for expression.
+- errCode: cortex.invalidArgument.staleRequestSignature
+  code: kStaleRequestSignature
+  area: auth
+  status: 400
+  reason: Stale request signature. Use the Medable-Server-Time response header to correct drift.
+- errCode: cortex.invalidArgument.state
+  code: kInvalidArgument
+  area: error
+  status: 400
+  reason: Invalid object state.
+- errCode: cortex.invalidArgument.string
+  code: kInvalidArgument
+  area: validation
+  status: 400
+  reason: Invalid string.
+- errCode: cortex.invalidArgument.stringExpected
+  code: kInvalidArgument
+  area: validation
+  status: 400
+  reason: String expected.
+- errCode: cortex.invalidArgument.stringExpectedforPatchPath
+  code: kInvalidArgument
+  area: patch
+  status: 400
+  reason: Patch operation path property must be a string.
+- errCode: cortex.invalidArgument.timeZone
+  code: kInvalidArgument
+  area: validation
+  status: 400
+  reason: Invalid timezone.
+- errCode: cortex.invalidArgument.tooLarge
+  code: kRequestTooLarge
+  area: auth
+  status: 400
+  reason: Value too large.
+- errCode: cortex.invalidArgument.unspecified
+  code: kInvalidArgument
+  area: error
+  status: 400
+  reason: Invalid Argument.
+- errCode: cortex.invalidArgument.unsupportedBulkOperation
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: Unsupported bulk operation.
+- errCode: cortex.invalidArgument.unsupportedContentEncoding
+  code: kInvalidArgument
+  area: error
+  status: 400
+  reason: Unsupported content encoding.
+- errCode: cortex.invalidArgument.updateDisabled
+  code: kInvalidArgument
+  area: db
+  status: 400
+  reason: Instance update is currently disabled.
+- errCode: cortex.invalidArgument.url
+  code: kInvalidArgument
+  area: validation
+  status: 400
+  reason: Invalid URL.
+- errCode: cortex.invalidArgument.validation
+  code: kValidationError
+  area: error
+  status: 400
+  reason: Validation error.
+- errCode: cortex.invalidArgument.valueExpectedForPatchValue
+  code: kInvalidArgument
+  area: patch
+  status: 400
+  reason: Missing patch operation value property.
+- errCode: cortex.invalidArgument.versionRequired
+  code: kRequired
+  area: validation
+  status: 428
+  reason: Versioned object requires version to update.
+- errCode: cortex.notFound.account
+  code: kNotFound
+  area: fault
+  status: 404
+  reason: Account not found.
+- errCode: cortex.notFound.accountToken
+  code: kNotFound
+  area: fault
+  status: 404
+  reason: Invalid account token.
+- errCode: cortex.notFound.app
+  code: kNotFound
+  area: apps
+  status: 404
+  reason: App not found.
+- errCode: cortex.notFound.appRsa
+  code: kNotFound
+  area: apps
+  status: 404
+  reason: App does not have a valid RSA key pair.
+- errCode: cortex.notFound.arrayValue
+  code: kNotFound
+  area: db
+  status: 404
+  reason: Element not found in array.
+- errCode: cortex.notFound.cacheKey
+  code: kNotFound
+  area: fault
+  status: 404
+  reason: Cache key not found.
+- errCode: cortex.notFound.cursor
+  code: kNotFound
+  area: db
+  status: 404
+  reason: Cursor not found.
+- errCode: cortex.notFound.deploymentTarget
+  code: kNotFound
+  area: deployment
+  status: 404
+  reason: Deployment target was not found.
+- errCode: cortex.notFound.document
+  code: kNotFound
+  area: db
+  status: 404
+  reason: Document not found.
+- errCode: cortex.notFound.env
+  code: kOrgControlInvalidOrg
+  area: env
+  status: 404
+  reason: Unrecognized organization environment.
+- errCode: cortex.notFound.expansionContext
+  code: kNotFound
+  area: db
+  status: 404
+  reason: Expansion context not found.
+- errCode: cortex.notFound.facet
+  code: kNotFound
+  area: files
+  status: 404
+  reason: Facet not found.
+- errCode: cortex.notFound.file
+  code: kNotFound
+  area: files
+  status: 404
+  reason: File not found.
+- errCode: cortex.notFound.instance
+  code: kNotFound
+  area: db
+  status: 404
+  reason: Instance not found.
+- errCode: cortex.notFound.missingMediaSource
+  code: kMissingMediaSource
+  area: files
+  status: 404
+  reason: A file source is missing from the upload.
+- errCode: cortex.notFound.missingQueueMessage
+  code: kMissingQueueMessage
+  area: queue
+  status: 404
+  reason: Message missing.
+- errCode: cortex.notFound.missingQueueTaskProcessor
+  code: kMissingQueueTaskProcessor
+  area: queue
+  status: 404
+  reason: Task processor not found.
+- errCode: cortex.notFound.notificationTemplateSpec
+  code: kNotFound
+  area: notifications
+  status: 404
+  reason: Missing notification worker template spec.
+- errCode: cortex.notFound.notificationTemplateVariable
+  code: kNotFound
+  area: notifications
+  status: 404
+  reason: Missing notification worker template variable.
+- errCode: cortex.notFound.object
+  code: kNotFound
+  area: db
+  status: 404
+  reason: Object not found.
+- errCode: cortex.notFound.org
+  code: kNotFound
+  area: db
+  status: 404
+  reason: Org not found.
+- errCode: cortex.notFound.passwordResetToken
+  code: kNotFound
+  area: fault
+  status: 404
+  reason: Invalid password reset token.
+- errCode: cortex.notFound.pathEndedPrematurely
+  code: kNotFound
+  area: db
+  status: 404
+  reason: Property path ended prematurely.
+- errCode: cortex.notFound.primitivePropertySelection
+  code: kNotFound
+  area: db
+  status: 404
+  reason: Selection not found inside of primitive value.
+- errCode: cortex.notFound.principal
+  code: kNotFound
+  area: fault
+  status: 404
+  reason: Principal not found.
+- errCode: cortex.notFound.property
+  code: kNotFound
+  area: db
+  status: 404
+  reason: Property not found.
+- errCode: cortex.notFound.propertyModel
+  code: kNotFound
+  area: db
+  status: 404
+  reason: Property model not found.
+- errCode: cortex.notFound.propertyNode
+  code: kNotFound
+  area: db
+  status: 404
+  reason: Property node not found.
+- errCode: cortex.notFound.propertySelection
+  code: kNotFound
+  area: db
+  status: 404
+  reason: One or more sub-properties could not be found.
+- errCode: cortex.notFound.role
+  code: kNotFound
+  area: fault
+  status: 404
+  reason: Role not found.
+- errCode: cortex.notFound.route
+  code: kNotFound
+  area: fault
+  status: 404
+  reason: Route not found.
+- errCode: cortex.notFound.script
+  code: kNotFound
+  area: db
+  status: 404
+  reason: Script not found.
+- errCode: cortex.notFound.serviceAccount
+  code: kNotFound
+  area: fault
+  status: 404
+  reason: Service account not found.
+- errCode: cortex.notFound.sourceObject
+  code: kNotFound
+  area: db
+  status: 404
+  reason: The source object could not be discerned. Try to narrow down your search to a single object.
+- errCode: cortex.notFound.storage
+  code: kNotFound
+  area: db
+  status: 404
+  reason: Storage location not found.
+- errCode: cortex.notFound.template
+  code: kNotFound
+  area: db
+  status: 404
+  reason: Template not found.
+- errCode: cortex.notFound.unspecified
+  code: kNotFound
+  area: db
+  status: 404
+  reason: Resource not found.
+- errCode: cortex.notFound.view
+  code: kNotFound
+  area: db
+  status: 404
+  reason: View not found.
+- errCode: cortex.notImplemented.indexedArrayUpdates
+  code: kNotImplemented
+  area: db
+  status: 501
+  reason: Indexed array updates are not yet supported.
+- errCode: cortex.notImplemented.pointerUrl
+  code: kNotImplemented
+  area: files
+  status: 501
+  reason: Streaming from URL not implemented for storage location.
+- errCode: cortex.notImplemented.unspecified
+  code: kNotImplemented
+  area: error
+  status: 501
+  reason: Not implemented.
+- errCode: cortex.success.newLocation
+  code: kNewLocation
+  area: location
+  status: 200
+  reason: A new location has been added to the account. Please verify it.
+- errCode: cortex.throttled.policy
+  code: kThrottled
+  area: policy
+  status: 429
+  reason: Policy throttled request.
+- errCode: cortex.throttled.stalledCursor
+  code: kThrottled
+  area: api
+  status: 429
+  reason: Stalled cursor was closed.
+- errCode: cortex.throttled.unspecified
+  code: kThrottled
+  area: error
+  status: 429
+  reason: Request throttled.
+- errCode: cortex.timeout.apnsNotification
+  code: kTimeout
+  area: notifcations
+  status: 408
+  reason: APNs notification timeout.
+- errCode: cortex.timeout.dbQuery
+  code: kTimeout
+  area: db
+  status: 408
+  reason: The query took too long to complete and was aborted.
+- errCode: cortex.timeout.envActivity
+  code: kTimeout
+  area: deployment
+  status: 408
+  reason: Gave up waiting for environment activity to cease.
+- errCode: cortex.timeout.queueMessage
+  code: kMessageTimeout
+  area: queue
+  status: 408
+  reason: Message timed out.
+- errCode: cortex.timeout.smsNotification
+  code: kSmsTimeout
+  area: sms
+  status: 408
+  reason: SMS Timeout.
+- errCode: cortex.timeout.unspecified
+  code: kTimeout
+  area: error
+  status: 408
+  reason: Timeout.
+- errCode: cortex.tooBusy.sandbox
+  code: kTooBusy
+  area: api
+  status: 429
+  reason: Sandbox too busy.
+- errCode: cortex.tooBusy.unspecified
+  code: kTooBusy
+  area: error
+  status: 429
+  reason: Server too busy.
+- errCode: cortex.tooLarge.config
+  code: kTooLarge
+  area: db
+  status: 413
+  reason: Breached maximum config storage limit.
+- errCode: cortex.tooLarge.connectionTargets
+  code: kTooLarge
+  area: connections
+  status: 413
+  reason: Too many connection targets.
+- errCode: cortex.tooLarge.memo
+  code: kRequestTooLarge
+  area: api
+  status: 413
+  reason: Memo too large.
+- errCode: cortex.tooLarge.unspecified
+  code: kRequestTooLarge
+  area: api
+  status: 413
+  reason: Request too large.
+- errCode: cortex.unsupportedMediaType.facetMime
+  code: kMediaTypeNotAllowed
+  area: files
+  status: 415
+  reason: The file type does not match allowed mime types for facet.
+- errCode: cortex.unsupportedOperation.directAclWrite
+  code: kUnsupportedOperation
+  area: db
+  status: 501
+  reason: Direct acl write.
+- errCode: cortex.unsupportedOperation.documentMerge
+  code: kUnsupportedOperation
+  area: db
+  status: 501
+  reason: Unsupported document merge.
+- errCode: cortex.unsupportedOperation.exactMatching
+  code: kUnsupportedOperation
+  area: db
+  status: 501
+  reason: Exact array/object property matching is unsupported.
+- errCode: cortex.unsupportedOperation.patchOp
+  code: kUnsupportedOperation
+  area: db
+  status: 501
+  reason: Unsupported or missing patch operation (op) property.
+- errCode: cortex.unsupportedOperation.requestMethodDoesNotMatchOperationSemantics
+  code: kUnsupportedOperation
+  area: db
+  status: 501
+  reason: Unsupported request method.
+- errCode: cortex.unsupportedOperation.setOwnerRequiresOwner
+  code: kUnsupportedOperation
+  area: db
+  status: 501
+  reason: setOwner operation cannot set ownership of contexts without an owner.
+- errCode: cortex.unsupportedOperation.typedQueryExpression
+  code: kUnsupportedOperation
+  area: db
+  status: 501
+  reason: Properties in objects with multiple types that share a name cannot be included in some combinations of expressions.
+- errCode: cortex.unsupportedOperation.uniqueKeyNotSet
+  code: kUnsupportedOperation
+  area: developer
+  status: 501
+  reason: The unique key must be set to import/export this instance.
+- errCode: cortex.unsupportedOperation.uniqueKeyRequiredForExport
+  code: kUnsupportedOperation
+  area: developer
+  status: 501
+  reason: A unique key must be defined for the object in order to import/export.
+- errCode: cortex.unsupportedOperation.unspecified
+  code: kUnsupportedOperation
+  area: error
+  status: 501
+  reason: Unsupported Operation
+- errCode: cortex.validation.JSONSchemaValidation
+  code: kInvalidArgument
+  area: validation
+  status: 400
+  reason: JSON schema validation failed

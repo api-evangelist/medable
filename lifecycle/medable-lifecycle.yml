@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.medable.com/releases/release-notes
+versioning:
+  scheme: uri-path
+  current: v2
+  api_release: 2.28.4
+  docs: https://docs.medable.com/cortex-api/cortex-api
+release_notes: https://docs.medable.com/releases/release-notes
+release_cadence: >-
+  Dated release notes with separate staging and production workspace deployment dates
+  per release; Cortex API semver plus an R-series platform tag.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: >-
+    No formal published deprecation/Sunset (RFC 8594) policy located. Faults include
+    cortex.gone.* (410) codes for removed resources.
+sla:
+  url: https://status.medable.com
+  uptime_target: null
+status_page: https://status.medable.com
+deprecated_operations: []

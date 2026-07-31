@@ -1,0 +1,60 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.medable.com/getting-started/cortex-user-guide/authentication.md
+docs: https://docs.medable.com/getting-started/cortex-user-guide/authentication
+summary:
+  types:
+  - apiKey
+  - http-signature
+  - session
+  api_key_in:
+  - header
+  notes: >-
+    Cortex uses two authentication models. Session-based authentication (cookies)
+    for interactive client apps (mobile/web) where individual users authenticate
+    with credentials; two-factor authentication applies to sessions. Signature-based
+    authentication for privileged back-end/system integrations, using a signing key
+    (key + secret) issued per App within an org. There is no OAuth2 / OpenID Connect
+    surface. Apps are created under Settings > Apps and expose an API key.
+schemes:
+- name: SessionAuth
+  type: session
+  description: >-
+    Cookie-based session initiated by account registration or login. Times out after
+    a period of inactivity per org settings. Two-factor authentication applies.
+  csrf: >-
+    When CSRF protection is enabled on the App, authenticated requests must send the
+    medable-csrf-token header.
+  sources:
+  - docs
+- name: SignatureAuth
+  type: http-signature
+  description: >-
+    Secure request-signing mechanism for third-party/back-end integrations (e.g. EMR,
+    HL7 messaging appliance). Signing keys can be scoped to single or multiple user
+    accounts and given a timed expiry.
+  headers:
+  - name: Medable-Client-Key
+    value: The API key of the calling App.
+  - name: Medable-Client-Signature
+    value: The calculated request signature.
+  - name: Medable-Client-Timestamp
+    value: >-
+      Client Unix timestamp in milliseconds; the server issues a Medable-Server-Time
+      response header clients can use to synchronize.
+  - name: Medable-Client-Nonce
+    value: Client-generated nonce matching /^[a-z\d]{16}$/i, used to prevent replay attacks.
+  - name: Medable-Client-Account
+    value: >-
+      Optionally sets the calling principal by account id (when the App is configured
+      to allow principal override).
+  sources:
+  - docs
+- name: ApiKey
+  type: apiKey
+  in: header
+  description: >-
+    Per-App API key generated under Settings > Apps, used together with the signing
+    secret for signature-based calls and to identify the client application.
+  sources:
+  - docs

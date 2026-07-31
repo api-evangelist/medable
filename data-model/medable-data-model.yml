@@ -1,0 +1,63 @@
+generated: '2026-07-20'
+method: derived
+source: https://docs.medable.com/cortex-api/objects
+docs: https://docs.medable.com/cortex-api/objects/objects-overview
+description: >-
+  Standard (built-in) Cortex objects and their relationships, derived from the object
+  reference. Cortex is schema-driven: orgs also define custom objects with typed
+  properties (Any, Binary, Boolean, Date, Document, File, Geometry, List, Number,
+  ObjectId, Reference, String) and Reference properties create id-based relationships.
+entities:
+- name: Organization
+  docs: https://docs.medable.com/cortex-api/objects/organization
+  description: Top-level tenant (org). All data and configuration is scoped to an org (org_code).
+- name: Account
+  docs: https://docs.medable.com/cortex-api/objects/account
+  description: A user/principal within an org.
+- name: Connection
+  docs: https://docs.medable.com/cortex-api/objects/connections
+  description: A link/invitation between accounts.
+- name: Notification
+  docs: https://docs.medable.com/cortex-api/objects/notifications
+  description: System or account notification.
+- name: Stats
+  docs: https://docs.medable.com/cortex-api/objects/stats
+- name: Logs
+  docs: https://docs.medable.com/cortex-api/objects/logs
+- name: Export
+  docs: https://docs.medable.com/cortex-api/objects/export
+- name: Events
+  docs: https://docs.medable.com/cortex-api/objects/events
+- name: Room
+  docs: https://docs.medable.com/cortex-api/objects/room
+  description: Televisit / real-time room.
+relationships:
+- from: Account
+  to: Organization
+  type: belongs_to
+  via: org
+- from: Connection
+  to: Account
+  type: belongs_to
+  via: target/creator account
+- from: Notification
+  to: Account
+  type: belongs_to
+  via: account
+property_types:
+- Any
+- Binary
+- Boolean
+- Date
+- Document
+- File
+- Geometry
+- List
+- Number
+- ObjectId
+- Reference
+- String
+notes: >-
+  Reference-typed properties hold ObjectId references to other object instances,
+  forming the graph; specific foreign-key field names vary per object schema and were
+  not exhaustively enumerated from the prose docs (no OpenAPI $ref graph available).

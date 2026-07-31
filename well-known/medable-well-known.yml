@@ -1,0 +1,32 @@
+generated: '2026-07-20'
+method: searched
+source: live probes of medable.com, api.medable.com, docs.medable.com
+hosts:
+- host: https://medable.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://api.medable.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+- host: https://docs.medable.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /llms.txt
+    status: 200
+    file: ../llms/medable-llms.txt
+notes: >-
+  No /.well-known/ discovery documents are published on the website or API hosts. The
+  docs host publishes an llms.txt documentation index (captured under llms/).

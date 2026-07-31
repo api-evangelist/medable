@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/Medable/mdctl
+docs: https://docs.medable.com/getting-started/cortex-user-guide/cortex-dev-tools
+name: mdctl
+description: >-
+  Medable's Developer Tools CLI. Exports org configuration from one organization and
+  imports it into another in a git-mergeable, minimal format for rebuilding on import.
+  Distributed as an npm module that also exposes a command interface.
+binary: mdctl
+repository: https://github.com/Medable/mdctl
+install:
+- npm install -g @medable/mdctl-cli
+package: "@medable/mdctl-cli"
+capabilities:
+- Export org configuration (env/manifest) to a git-mergeable tree.
+- Import configuration into a target org.
+- Direct Cortex API calls (e.g. mdctl api GET /accounts) as shown in the Faults docs.
+related_packages:
+- "@medable/mdctl-api"
+- "@medable/mdctl-api-driver"
+- "@medable/mdctl-axon-tools"
+- "@medable/mdctl-manifest"
+- "@medable/mdctl-sandbox"
+reference_implementation: Atom plugin using the mdctl npm module.

@@ -1,0 +1,48 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/Medable/mdctl
+docs: https://docs.medable.com/getting-started/cortex-user-guide/cortex-dev-tools
+notes: >-
+  Medable's official developer tooling is the mdctl monorepo (github.com/Medable/mdctl),
+  published to npm under the @medable scope. The CLI binary (mdctl) ships in
+  @medable/mdctl-cli; @medable/mdctl-api and @medable/mdctl-api-driver are the API
+  client libraries. An unscoped npm package named "medable" is a third-party client
+  (github.com/cepr/medable) and is NOT first-party.
+packages:
+- language: javascript
+  registry: npm
+  name: "@medable/mdctl-cli"
+  url: https://www.npmjs.com/package/@medable/mdctl-cli
+  install: npm install -g @medable/mdctl-cli
+  bin: mdctl
+  official: true
+  description: Medable Developer Tools command-line interface.
+- language: javascript
+  registry: npm
+  name: "@medable/mdctl-api"
+  url: https://www.npmjs.com/package/@medable/mdctl-api
+  install: npm install @medable/mdctl-api
+  official: true
+  description: Cortex API client used by mdctl.
+- language: javascript
+  registry: npm
+  name: "@medable/mdctl-api-driver"
+  url: https://www.npmjs.com/package/@medable/mdctl-api-driver
+  install: npm install @medable/mdctl-api-driver
+  official: true
+  description: Lower-level Cortex API driver.
+- language: javascript
+  registry: npm
+  name: "@medable/mdctl-axon-tools"
+  url: https://www.npmjs.com/package/@medable/mdctl-axon-tools
+  install: npm install @medable/mdctl-axon-tools
+  official: true
+  description: Axon study configuration tooling.
+- language: swift
+  registry: docs
+  name: Cortex iOS (Swift SDK)
+  url: https://docs.medable.com/getting-started/cortex-user-guide/cortex-ios
+  official: true
+  description: >-
+    Documented iOS/Swift SDK for the Cortex API (see "Get started with Swift"). Package
+    registry/name not independently verified; docs-referenced.
