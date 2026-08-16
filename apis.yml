@@ -31,7 +31,7 @@ accessModel:
   method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-20'
+modified: '2026-08-15'
 image: https://cdn.prod.website-files.com/63da4ae4359b4b2bffd2a3b6/64677a1c8fad4c624f57af3c_medable-open-graph-image.png
 tags:
 - Company
@@ -120,14 +120,26 @@ common:
   url: data-model/medable-data-model.yml
 - type: Sandbox
   url: sandbox/medable-sandbox.yml
-- type: WellKnown
-  url: well-known/medable-well-known.yml
 - type: LLMsTxt
   url: llms/medable-llms.txt
 - type: DomainSecurity
   url: security/medable-domain-security.yml
+- type: Compliance
+  url: https://www.medable.com/platform/overview
+- type: Pricing
+  url: https://info.medable.com/Pricing.html
+- type: Plans
+  url: plans/medable-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/medable-rate-limits.yml
+- type: Integrations
+  url: integrations/medable-connectors.yml
+- type: HelpCenter
+  url: https://www.medable.com/company/support
+- type: FAQ
+  url: https://www.medable.com/resources/faq
 x-enrichment:
-  date: '2026-07-20'
+  date: '2026-08-15'
   status: enriched
-  artifacts_added: 14
+  artifacts_added: 3
   pass: local-v1
