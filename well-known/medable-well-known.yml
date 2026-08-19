@@ -1,6 +1,19 @@
-generated: '2026-07-20'
-method: searched
-source: live probes of medable.com, api.medable.com, docs.medable.com
+generated: '2026-08-15'
+method: probed
+source: live probes of medable.com, www.medable.com, api.medable.com, docs.medable.com
+checked: '2026-08-15'
+result: none
+notes: >-
+  RECORDED ABSENCE. Re-probed 2026-08-15: no /.well-known/ discovery document is served
+  on any Medable host. medable.com and www.medable.com answer every /.well-known/* path
+  with an HTTP 404 HTML body reading "Invalid .well-known request"; api.medable.com
+  answers with the Cortex fault envelope (object=fault, cortex.notFound.env, 404),
+  which also confirms the API host is live but org-scoped (api.medable.com/<org_code>/v2/);
+  docs.medable.com returns its Next.js 404 shell. NO WellKnown or SecurityTxt pointer is
+  emitted in apis.yml, because none of these paths returns a document. The docs host DOES
+  serve a real llms.txt (200), which is captured separately under llms/ and pointed at
+  with type LLMsTxt — /llms.txt is not a /.well-known/ path and does not qualify as a
+  well-known catalog.
 hosts:
 - host: https://medable.com
   documents:
@@ -14,19 +27,43 @@ hosts:
     status: 404
   - path: /.well-known/ai-plugin.json
     status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://www.medable.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
 - host: https://api.medable.com
   documents:
   - path: /.well-known/security.txt
     status: 404
   - path: /.well-known/openid-configuration
     status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
 - host: https://docs.medable.com
   documents:
   - path: /.well-known/security.txt
     status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
   - path: /llms.txt
     status: 200
     file: ../llms/medable-llms.txt
-notes: >-
-  No /.well-known/ discovery documents are published on the website or API hosts. The
-  docs host publishes an llms.txt documentation index (captured under llms/).
+    note: >-
+      Real 200 document, but NOT a /.well-known/ path — captured under llms/ and pointed
+      at with type LLMsTxt. Does not earn a WellKnown pointer.

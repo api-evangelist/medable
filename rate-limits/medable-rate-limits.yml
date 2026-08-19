@@ -1,0 +1,151 @@
+generated: '2026-08-15'
+method: searched
+source: https://docs.medable.com/cortex-api/scripting/script-limits.md
+docs:
+- https://docs.medable.com/cortex-api/scripting/script-limits
+- https://docs.medable.com/getting-started/cortex-user-guide/making-requests
+- https://docs.medable.com/cortex-api/faults/fault-reference
+limit_count: 12
+description: >-
+  Medable does not publish a conventional per-key/per-second HTTP rate limit for the
+  Cortex API, and returns no RateLimit-*/X-RateLimit-* response headers. What it DOES
+  publish is a set of hard platform quotas: per-execution limits on server-side Cortex
+  scripts (jobs, routes, triggers), a daily job-run cap, a request size ceiling, and a
+  documented throttling fault family that surfaces as HTTP 429. Throttling is also
+  applied by org Policy (cortex.throttled.policy). Limits below are the published
+  DEFAULTS; the docs describe them as defaults that a multi-tenant environment enforces
+  so runaway scripts cannot monopolize shared resources.
+response_headers:
+  rate_limit_headers: []
+  retry_after: false
+  notes: >-
+    No RateLimit-*, X-RateLimit-* or Retry-After header is documented on any Cortex
+    response. The only documented cross-cutting response header is Medable-Server-Time
+    (clock-drift correction for signature auth) and Medable-Csrf-Token. Agents cannot
+    read remaining quota from a response; exhaustion is only observable as a fault.
+exhaustion:
+  status: 429
+  envelope: object=fault
+  faults:
+  - errCode: cortex.throttled.policy
+    code: kThrottled
+    status: 429
+    reason: Policy throttled request.
+  - errCode: cortex.throttled.stalledCursor
+    code: kThrottled
+    status: 429
+    reason: Stalled cursor was closed.
+  - errCode: cortex.throttled.unspecified
+    code: kThrottled
+    status: 429
+    reason: Request throttled.
+  - errCode: cortex.tooBusy.sandbox
+    code: kTooBusy
+    status: 429
+    reason: Sandbox too busy.
+  - errCode: cortex.tooBusy.unspecified
+    code: kTooBusy
+    status: 429
+    reason: Server too busy.
+  ref: errors/medable-error-codes.yml
+limits:
+- name: request_size
+  scope: per-request
+  limit: 1024
+  unit: kilobytes
+  window: null
+  description: Default maximum HTTP request size for a Cortex API call.
+  source: https://docs.medable.com/getting-started/cortex-user-guide/making-requests
+  exhaustion_fault: cortex.tooLarge.unspecified (413)
+- name: job_timeout
+  scope: per-script-execution
+  limit: 10000
+  unit: milliseconds
+  window: null
+  description: Maximum execution time for a Cortex Job.
+  source: https://docs.medable.com/cortex-api/scripting/script-limits
+- name: route_timeout
+  scope: per-script-execution
+  limit: 5000
+  unit: milliseconds
+  window: null
+  description: Maximum execution time for a Cortex Route (custom API endpoint).
+  source: https://docs.medable.com/cortex-api/scripting/script-limits
+- name: trigger_timeout
+  scope: per-script-execution
+  limit: 5000
+  unit: milliseconds
+  window: null
+  description: Maximum execution time for a Cortex Trigger.
+  source: https://docs.medable.com/cortex-api/scripting/script-limits
+- name: notifications_per_execution
+  scope: per-script-execution
+  limit: 100
+  unit: notifications
+  window: null
+  description: Maximum number of email, push and/or SMS notifications per script execution.
+  source: https://docs.medable.com/cortex-api/scripting/script-limits
+- name: callouts_per_execution
+  scope: per-script-execution
+  limit: 5
+  unit: requests
+  window: null
+  description: Maximum number of outbound http-module requests per script execution.
+  source: https://docs.medable.com/cortex-api/scripting/script-limits
+- name: callout_timeout
+  scope: per-callout
+  limit: 30000
+  unit: milliseconds
+  window: null
+  description: Maximum time for an outbound http-module request.
+  source: https://docs.medable.com/cortex-api/scripting/script-limits
+- name: callout_request_size
+  scope: per-callout
+  limit: 524.288
+  unit: kilobytes
+  window: null
+  description: Maximum size of an outbound http-module request body.
+  source: https://docs.medable.com/cortex-api/scripting/script-limits
+- name: callout_response_size
+  scope: per-callout
+  limit: 524.288
+  unit: kilobytes
+  window: null
+  description: Maximum size of an outbound http-module response body.
+  source: https://docs.medable.com/cortex-api/scripting/script-limits
+- name: execution_depth
+  scope: per-script-execution
+  limit: 4
+  unit: levels
+  window: null
+  description: Maximum levels of nested Cortex script executions.
+  source: https://docs.medable.com/cortex-api/scripting/script-limits
+- name: max_operations
+  scope: per-script-execution
+  limit: 1000000
+  unit: operations
+  window: null
+  description: Maximum operations across Jobs, Triggers and Routes.
+  source: https://docs.medable.com/cortex-api/scripting/script-limits
+- name: job_runs_per_day
+  scope: per-org
+  limit: 24
+  unit: runs
+  window: 1d
+  description: Maximum number of Cortex Job runs per day.
+  source: https://docs.medable.com/cortex-api/scripting/script-limits
+other_quotas:
+- name: cortex_script_size
+  limit: 50000
+  unit: characters
+  description: Maximum character length of a single Cortex script.
+  source: https://docs.medable.com/cortex-api/scripting/script-limits
+- name: notification_expiry
+  limit: 30
+  unit: days
+  description: Unacknowledged notifications expire after 30 days.
+  source: https://docs.medable.com/cortex-api/objects/notifications
+gaps:
+- No published per-second / per-minute HTTP request rate for the Cortex API.
+- No rate-limit response headers, so remaining quota is not machine-readable.
+- Policy-based throttling thresholds are org-configured and not published.

@@ -1,0 +1,166 @@
+generated: '2026-08-15'
+method: searched
+source: https://www.medable.com/platform/medable-connectors
+status: listing-only
+description: >-
+  Medable Connectors — the published integration catalog for the Medable agentic
+  platform (Agent Studio and the CRA / PI Summary Review / eTMF / Digital Data Flow
+  agents). Captured verbatim from the provider's own connectors directory. These are
+  LISTING-ONLY entries: Medable publishes no OpenAPI, no MCP server and no per-connector
+  configuration contract, so no Arazzo workflow can be authored against them without
+  fabricating operations. Recorded here as a real surface measurement, not a spec.
+notes: >-
+  Medable's public developer contract (the Cortex API at docs.medable.com) and this
+  connector catalog are DIFFERENT surfaces. Connectors are configured inside the Medable
+  platform by a customer's own organization ("managed securely by your organization"),
+  not called over the Cortex REST API. The "Agent-to-Agent Ecosystem" category asserts
+  interoperation with Google Agentspace, Microsoft Copilot and Salesforce Agentforce,
+  but Medable serves no A2A Agent Card at /.well-known/agent-card.json or
+  /.well-known/agent.json on any of its hosts (probed 2026-08-15, all 404), and no MCP
+  endpoint was located. The interoperability claim is marketing copy, not a discoverable
+  agent contract.
+categories:
+- Agent-to-Agent Ecosystem
+- Utility & Tooling Connectors
+- Identity & Access
+- Document, Consent & Localization
+- Project & Dev Tools
+- File Storage
+- Enterprise Systems
+- Data & Intelligence Systems
+- Clinical Systems
+connector_count: 43
+connectors:
+- name: Google Agentspace
+  category: Agent-to-Agent Ecosystem
+  summary: Enables Medable agents to collaborate with Google enterprise agents across your workflows.
+- name: Microsoft Copilot
+  category: Agent-to-Agent Ecosystem
+  summary: Connects Medable agents to Copilot so trial work can flow alongside daily tools.
+- name: Salesforce Agentforce
+  category: Agent-to-Agent Ecosystem
+  summary: Bridges Medable agents with Agentforce to unify clinical and commercial intelligence.
+- name: Code Sandbox
+  category: Utility & Tooling Connectors
+  summary: Runs code securely inside agent workflows for analysis, transformations, and validation.
+- name: Google Search
+  category: Utility & Tooling Connectors
+  summary: Gives agents grounded, real-time web context to inform clinical decisions.
+- name: URL Fetcher
+  category: Utility & Tooling Connectors
+  summary: Pulls content from any URL so agents can reference live external sources.
+- name: Okta / OAuth / OpenID
+  category: Identity & Access
+  summary: Single sign-on with Okta and open identity standards for secure team access.
+- name: Azure AD / Entra ID
+  category: Identity & Access
+  summary: Microsoft identity integration so users sign in with existing enterprise credentials.
+- name: Medable User Administration
+  category: Identity & Access
+  summary: Native user, role, and permission management across the Medable platform.
+- name: RWS (Translation)
+  category: Document, Consent & Localization
+  summary: Connects to RWS for compliant, high-quality translation of trial content at scale.
+- name: Docusign
+  category: Document, Consent & Localization
+  summary: Embeds DocuSign signing into consent and document workflows for sponsors and sites.
+- name: eSignature / Consent
+  category: Document, Consent & Localization
+  summary: Built-in eSignature for consent, agreements, and any regulated document workflow.
+- name: Figma
+  category: Project & Dev Tools
+  summary: Pulls designs and assets from Figma into study build and content workflows.
+- name: GitLab
+  category: Project & Dev Tools
+  summary: Connects GitLab repos so engineering work syncs with platform development tasks.
+- name: GitHub
+  category: Project & Dev Tools
+  summary: Links GitHub issues, code, and reviews to clinical and product workstreams.
+- name: Confluence
+  category: Project & Dev Tools
+  summary: Brings Confluence pages into agent context for SOPs, specs, and study documentation.
+- name: Jira
+  category: Project & Dev Tools
+  summary: Surfaces Jira tickets and projects inside Medable so teams track work in one place.
+- name: Box
+  category: File Storage
+  summary: Reads and writes files in Box for secure document collaboration across study teams.
+- name: OneDrive
+  category: File Storage
+  summary: Connects Microsoft OneDrive so trial files stay in sync with your enterprise storage.
+- name: Amazon S3
+  category: File Storage
+  summary: Streams data and assets to and from S3 buckets for enterprise-scale workflows.
+- name: Google Workspace (Docs, Gmail)
+  category: Enterprise Systems
+  summary: Reads Docs and Gmail so agents act on requests inside your everyday tools.
+- name: Slack
+  category: Enterprise Systems
+  summary: Brings Medable alerts, agent updates, and approvals into Slack channels and DMs.
+- name: Microsoft Teams
+  category: Enterprise Systems
+  summary: Surfaces trial activity, agent outputs, and approvals directly inside Teams.
+- name: Microsoft 365
+  category: Enterprise Systems
+  summary: Connects to the full Microsoft 365 suite for documents, mail, and collaboration.
+- name: Salesforce
+  category: Enterprise Systems
+  summary: Syncs sponsor, site, and account data between Salesforce and Medable.
+- name: Microsoft SQL Server
+  category: Data & Intelligence Systems
+  summary: Connects to SQL Server databases for direct querying and data exchange.
+- name: MySQL
+  category: Data & Intelligence Systems
+  summary: Reads and writes to MySQL databases for custom data pipelines and analytics.
+- name: PostgreSQL
+  category: Data & Intelligence Systems
+  summary: Integrates with PostgreSQL for structured trial and operational data.
+- name: Bio Ontologies
+  category: Data & Intelligence Systems
+  summary: Provides standardized biomedical vocabularies for consistent data classification.
+- name: Cube
+  category: Data & Intelligence Systems
+  summary: Connects to Cube for semantic data modeling across analytics and AI workflows.
+- name: Databricks
+  category: Data & Intelligence Systems
+  summary: Streams trial data into Databricks for advanced analytics and ML pipelines.
+- name: Google BigQuery
+  category: Data & Intelligence Systems
+  summary: Pushes Medable data into BigQuery for warehouse-scale analytics.
+- name: Snowflake
+  category: Data & Intelligence Systems
+  summary: Connects to Snowflake so trial data lives alongside the rest of your enterprise data.
+- name: Citeline
+  category: Clinical Systems
+  summary: Pulls Citeline intelligence into study planning, feasibility, and competitive context.
+- name: Medable eCOA
+  category: Clinical Systems
+  summary: Native integration with Medable's eCOA for end-to-end evidence collection.
+- name: Medable eConsent
+  category: Clinical Systems
+  summary: Native integration with Medable Total Consent for participant onboarding.
+- name: Oracle Argus
+  category: Clinical Systems
+  summary: Connects to Argus for pharmacovigilance and adverse event reporting.
+- name: Oracle IRT
+  category: Clinical Systems
+  summary: Syncs randomization and trial supply data from Oracle IRT.
+- name: Veeva eTMF
+  category: Clinical Systems
+  summary: Integrates with Veeva eTMF for automated document handling and TMF Agent workflows.
+- name: Veeva CTMS
+  category: Clinical Systems
+  summary: Connects to Veeva CTMS so monitoring, milestones, and site data stay in sync.
+- name: Oracle InForm
+  category: Clinical Systems
+  summary: Reads and writes to Oracle InForm EDC for unified data capture and reconciliation.
+- name: Medidata Rave
+  category: Clinical Systems
+  summary: Connects to Medidata Rave EDC so data flows cleanly between systems.
+- name: Veeva EDC
+  category: Clinical Systems
+  summary: Integrates with Veeva EDC for synchronized data capture across trials.
+evidence:
+- url: https://www.medable.com/platform/medable-connectors
+  status: 200
+  fetched: '2026-08-15'

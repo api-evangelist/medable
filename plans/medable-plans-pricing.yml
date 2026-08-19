@@ -1,0 +1,33 @@
+generated: '2026-08-15'
+method: searched
+source: https://info.medable.com/Pricing.html
+docs: https://info.medable.com/Pricing.html
+plan_count: 0
+pricing_model: custom-quote
+currency: null
+notes: >-
+  Medable publishes no priced plans or tiers. The "Pricing" link in the medable.com
+  navigation resolves to https://info.medable.com/Pricing.html (HTTP 200), a
+  marketing/lead-capture page that states: "Our pricing is customized to fit the
+  unique needs of your study... To discuss a custom quote, simply submit the form and
+  complete a quick diagnostic quiz." The page collects capability selection, number of
+  studies, number of participants and number of languages, then routes to sales. There
+  is no self-serve price list, no per-API-call rate card, and no machine-readable
+  pricing endpoint. The Cortex API is licensed as part of a Medable platform
+  engagement, not sold separately.
+quote_inputs:
+- Capabilities of interest
+- Number of studies
+- Number of participants
+- Number of languages
+plans: []
+evidence:
+- url: https://info.medable.com/Pricing.html
+  status: 200
+  note: Custom-quote page; no tiers, no prices.
+- url: https://www.medable.com/pricing
+  status: 404
+  note: No pricing page on the primary web property; the nav links off-domain to info.medable.com.
+related:
+- https://www.medable.com/resources/talk-with-an-expert
+- https://www.medable.com/company/contact

@@ -2,13 +2,11 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: https://docs.medable.com/cortex-api/
-notes: >-
-  No official hosted/remote MCP server for the Cortex API was found (Medable's "agentic"
-  products such as Agent Studio and the DDF/CRA/PI agents are clinical-workflow AI agents,
-  not an MCP server exposing the Cortex API). The tools below are a CANDIDATE set derived
-  from the documented Cortex object REST surface (schema-driven CRUD, query, aggregate),
-  where {object} is a plural object name such as accounts, and is scoped to an org by
-  org_code. Not a published Medable artifact.
+notes: No official hosted/remote MCP server for the Cortex API was found (Medable's "agentic" products
+  such as Agent Studio and the DDF/CRA/PI agents are clinical-workflow AI agents, not an MCP server exposing
+  the Cortex API). The tools below are a CANDIDATE set derived from the documented Cortex object REST
+  surface (schema-driven CRUD, query, aggregate), where {object} is a plural object name such as accounts,
+  and is scoped to an org by org_code. Not a published Medable artifact.
 server:
   name: medable-cortex
   transport: http
@@ -16,19 +14,39 @@ server:
 tools:
 - name: list_objects
   description: List/query instances of a Cortex object with where/sort/skip/limit.
-  source_operation: "GET /{org_code}/v2/{object}"
+  source_operation: GET /{org_code}/v2/{object}
 - name: get_object
   description: Retrieve a single object instance by id.
-  source_operation: "GET /{org_code}/v2/{object}/{id}"
+  source_operation: GET /{org_code}/v2/{object}/{id}
 - name: create_object
   description: Create a new object instance.
-  source_operation: "POST /{org_code}/v2/{object}"
+  source_operation: POST /{org_code}/v2/{object}
 - name: update_object
   description: Update an object instance.
-  source_operation: "PATCH /{org_code}/v2/{object}/{id}"
+  source_operation: PATCH /{org_code}/v2/{object}/{id}
 - name: delete_object
   description: Delete an object instance.
-  source_operation: "DELETE /{org_code}/v2/{object}/{id}"
+  source_operation: DELETE /{org_code}/v2/{object}/{id}
 - name: aggregate_objects
   description: Run an aggregation pipeline over an object.
-  source_operation: "GET /{org_code}/v2/{object} (aggregation operators)"
+  source_operation: GET /{org_code}/v2/{object} (aggregation operators)
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: probed
+  tools: 6
+  checked: '2026-08-15'
+  source: >-
+    Probed 2026-08-15: api.medable.com/mcp 404 (Cortex fault envelope),
+    docs.medable.com/mcp 404, mcp.medable.com does not resolve (curl exit, no DNS).
+    api.medable.com/.well-known/oauth-authorization-server and
+    /.well-known/oauth-protected-resource both 404. No @medable MCP package on npm.
+    Medable publishes a 43-entry connector catalog at
+    medable.com/platform/medable-connectors with an "Agent-to-Agent Ecosystem" category
+    (Google Agentspace, Microsoft Copilot, Salesforce Agentforce), but those are
+    platform-internal connectors configured by the customer's org — no MCP endpoint and
+    no A2A agent card is served on any Medable host. See
+    integrations/medable-connectors.yml.

@@ -1,13 +1,48 @@
-generated: '2026-07-20'
+generated: '2026-08-15'
 method: searched
 source: https://github.com/Medable/mdctl
 docs: https://docs.medable.com/getting-started/cortex-user-guide/cortex-dev-tools
+registries_checked:
+- registry: npm
+  endpoint: https://registry.npmjs.org/<pkg>
+  checked: '2026-08-15'
+- registry: cocoapods
+  endpoint: https://trunk.cocoapods.org/api/v1/pods/<pod>
+  checked: '2026-08-15'
+- registry: pypi
+  result: no first-party Medable package found
+- registry: rubygems
+  result: no first-party Medable package found
+- registry: maven-central
+  result: no first-party Medable package found
+- registry: nuget
+  result: no first-party Medable package found
+- registry: crates.io
+  result: no first-party Medable package found
+- registry: pkg.go.dev
+  result: no first-party Medable package found
+- registry: packagist
+  result: no first-party Medable package found
 notes: >-
   Medable's official developer tooling is the mdctl monorepo (github.com/Medable/mdctl),
   published to npm under the @medable scope. The CLI binary (mdctl) ships in
   @medable/mdctl-cli; @medable/mdctl-api and @medable/mdctl-api-driver are the API
   client libraries. An unscoped npm package named "medable" is a third-party client
   (github.com/cepr/medable) and is NOT first-party.
+currency:
+  note: >-
+    CURRENCY FINDING. Every @medable/mdctl-* package on npm carries the same version
+    (1.0.73) with a latest-version publish date of 2024-07-31 — the whole monorepo is
+    released in lockstep, and the last release predates the current documented Cortex
+    API release (2.28.4 / R4.1.5, deployed 2025-06-20). The npm packument `modified`
+    timestamp (2026-02-25) reflects registry metadata changes (dist-tag/deprecation
+    edits), not a new release. The first-party iOS CocoaPod (Medable) last published
+    1.9.9 on 2017-11-27 and is effectively abandoned; the docs still reference an
+    iOS/Swift SDK.
+  npm_latest_version: 1.0.73
+  npm_latest_published: '2024-07-31'
+  cocoapods_latest_version: 1.9.9
+  cocoapods_latest_published: '2017-11-27'
 packages:
 - language: javascript
   registry: npm
@@ -16,6 +51,9 @@ packages:
   install: npm install -g @medable/mdctl-cli
   bin: mdctl
   official: true
+  version: 1.0.73
+  published: '2024-07-31'
+  release_count: 97
   description: Medable Developer Tools command-line interface.
 - language: javascript
   registry: npm
@@ -23,6 +61,9 @@ packages:
   url: https://www.npmjs.com/package/@medable/mdctl-api
   install: npm install @medable/mdctl-api
   official: true
+  version: 1.0.73
+  published: '2024-07-31'
+  release_count: 93
   description: Cortex API client used by mdctl.
 - language: javascript
   registry: npm
@@ -30,6 +71,9 @@ packages:
   url: https://www.npmjs.com/package/@medable/mdctl-api-driver
   install: npm install @medable/mdctl-api-driver
   official: true
+  version: 1.0.73
+  published: '2024-07-31'
+  release_count: 74
   description: Lower-level Cortex API driver.
 - language: javascript
   registry: npm
@@ -37,12 +81,45 @@ packages:
   url: https://www.npmjs.com/package/@medable/mdctl-axon-tools
   install: npm install @medable/mdctl-axon-tools
   official: true
+  version: 1.0.73
+  published: '2024-07-31'
+  release_count: 36
   description: Axon study configuration tooling.
-- language: swift
-  registry: docs
-  name: Cortex iOS (Swift SDK)
-  url: https://docs.medable.com/getting-started/cortex-user-guide/cortex-ios
+- language: javascript
+  registry: npm
+  name: "@medable/mdctl-manifest"
+  url: https://www.npmjs.com/package/@medable/mdctl-manifest
+  install: npm install @medable/mdctl-manifest
   official: true
+  version: 1.0.73
+  published: '2024-07-31'
+  release_count: 85
+  description: Manifest handling for mdctl org configuration export/import.
+- language: javascript
+  registry: npm
+  name: "@medable/mdctl-sandbox"
+  url: https://www.npmjs.com/package/@medable/mdctl-sandbox
+  install: npm install @medable/mdctl-sandbox
+  official: true
+  version: 1.0.73
+  published: '2024-07-31'
+  release_count: 93
+  description: Sandboxed script execution support for mdctl.
+- language: swift
+  registry: cocoapods
+  name: Medable
+  url: https://cocoapods.org/pods/Medable
+  install: pod 'Medable'
+  official: true
+  version: 1.9.9
+  published: '2017-11-27'
+  release_count: 90
+  owners:
+  - billy@medable.com
+  - fer@medable.com
+  - mobile_builds@medable.com
   description: >-
-    Documented iOS/Swift SDK for the Cortex API (see "Get started with Swift"). Package
-    registry/name not independently verified; docs-referenced.
+    First-party iOS/Swift Cortex SDK CocoaPod (ownership confirmed by @medable.com
+    trunk owner emails). Last release 2017-11-27; the docs still document an iOS/Swift
+    SDK at docs.medable.com/getting-started/cortex-user-guide/cortex-ios.
+  docs: https://docs.medable.com/getting-started/cortex-user-guide/cortex-ios

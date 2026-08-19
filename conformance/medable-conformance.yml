@@ -1,12 +1,72 @@
-generated: '2026-07-20'
-method: derived
-source: openapi/none — derived from docs.medable.com Cortex API reference
+generated: '2026-08-15'
+method: searched
+source: openapi/none — derived from docs.medable.com Cortex API reference; regulatory
+  claims searched on medable.com
 description: >-
   Cross-cutting technical standard conformance for the Medable Cortex API, derived
-  from the published documentation. Cortex is a proprietary schema-driven object API;
-  it does not implement OAuth2/OIDC or RFC 9457 problem+json (it uses a custom fault
-  envelope). Compliance certifications (HIPAA/SOC 2/etc.) are not published on a public
-  trust page and are therefore not asserted here.
+  from the published documentation, plus the regulatory compliance posture Medable
+  publishes on its own site. Cortex is a proprietary schema-driven object API; it does
+  not implement OAuth2/OIDC or RFC 9457 problem+json (it uses a custom fault envelope).
+  Medable operates no public trust center and publishes no SOC 2 / ISO 27001 / HITRUST
+  attestation page, so no security certification is asserted here — only the regulatory
+  regimes Medable states its products conform to.
+regulatory:
+  published: true
+  page: https://www.medable.com/platform/overview
+  claim: >-
+    "Compliance by design: 21 CFR Part 11, Annex 11, HIPAA, GDPR, ICH GCP, and more"
+    (platform overview). The FAQ restates it: "Medable's products are designed to
+    conform to FDA 21 CFR Part 11, HIPAA, and GDPR requirements."
+  regimes:
+  - id: fda-21-cfr-part-11
+    name: FDA 21 CFR Part 11 (electronic records / electronic signatures)
+    claimed: true
+    evidence: https://www.medable.com/resources/faq
+  - id: eudralex-annex-11
+    name: EudraLex Volume 4 Annex 11 (computerised systems)
+    claimed: true
+    evidence: https://www.medable.com/platform/overview
+  - id: hipaa
+    name: HIPAA
+    claimed: true
+    evidence: https://www.medable.com/resources/faq
+  - id: gdpr
+    name: GDPR
+    claimed: true
+    evidence: https://www.medable.com/legal/customer-dpa
+    note: >-
+      Pre-signed Controller-to-Processor-to-Controller and Processor-to-Processor DPA
+      templates published; sub-processor list at /legal/sub-processors; law-enforcement
+      transparency report at /legal/transparency-report.
+  - id: ich-gcp
+    name: ICH E6 Good Clinical Practice
+    claimed: true
+    evidence: https://www.medable.com/platform/overview
+  - id: cnil
+    name: CNIL approval (France / EU digital clinical trials)
+    claimed: true
+    evidence: https://www.medable.com/newsroom/medable-achieves-landmark-cnil-approval-expanding-access-for-digital-clinical-trials-across-the-european-union
+  not_published:
+  - SOC 2 (no public report or trust page)
+  - ISO 27001 (no public certificate)
+  - HITRUST CSF (announced by press release in 2019; no current claim on medable.com)
+  - FedRAMP
+contract_discovery:
+  checked: '2026-08-15'
+  openapi: none
+  graphql: none
+  mcp: none
+  asyncapi: none
+  agent_card: none
+  note: >-
+    Full STEP 0b sweep against api.medable.com, www.medable.com and docs.medable.com.
+    No /openapi.json, /openapi.yaml, /swagger.json, /v1|/v2 openapi, /api-docs, /docs or
+    /redoc returned a parseable spec; api.medable.com answers every unmatched path with
+    the Cortex fault envelope because the API is org-scoped
+    (api.medable.com/<org_code>/v2/) and refuses an unrecognised org. The Medable GitHub
+    org (13 public repos) publishes no spec — mdctl, ResearchKit, CareKit, ResearchStack
+    and forks only. The Cortex reference is hand-written GitBook prose with per-endpoint
+    tables; the only machine-readable index Medable serves is docs.medable.com/llms.txt.
 standards:
 - id: oauth2
   conforms: false
