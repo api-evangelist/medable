@@ -41,6 +41,16 @@ tags:
 - eCOA
 - Healthcare
 - Decentralized Clinical Trials
+- Backend-as-a-Service
+- Agentic AI
+tags_raw:
+- Company
+- Human Health
+- Clinical Trials
+- Life Sciences
+- eCOA
+- Healthcare
+- Decentralized Clinical Trials
 - Backend as a Service
 - Agentic AI
 apis:
@@ -53,6 +63,9 @@ apis:
   humanURL: https://docs.medable.com/cortex-api/cortex-api
   baseURL: https://api.medable.com
   tags:
+  - Clinical Trials
+  - Backend-as-a-Service
+  tags_raw:
   - Clinical Trials
   - Backend as a Service
   properties:
