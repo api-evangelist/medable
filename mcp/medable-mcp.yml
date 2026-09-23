@@ -32,21 +32,7 @@ tools:
   source_operation: GET /{org_code}/v2/{object} (aggregation operators)
 deployment:
   mode: none
-  endpoint: null
-  install: null
-  package: null
-  auth: unknown
-  verified: probed
+  verified: derived
   tools: 6
-  checked: '2026-08-15'
-  source: >-
-    Probed 2026-08-15: api.medable.com/mcp 404 (Cortex fault envelope),
-    docs.medable.com/mcp 404, mcp.medable.com does not resolve (curl exit, no DNS).
-    api.medable.com/.well-known/oauth-authorization-server and
-    /.well-known/oauth-protected-resource both 404. No @medable MCP package on npm.
-    Medable publishes a 43-entry connector catalog at
-    medable.com/platform/medable-connectors with an "Agent-to-Agent Ecosystem" category
-    (Google Agentspace, Microsoft Copilot, Salesforce Agentforce), but those are
-    platform-internal connectors configured by the customer's org — no MCP endpoint and
-    no A2A agent card is served on any Medable host. See
-    integrations/medable-connectors.yml.
+  checked: '2026-08-12'
+  source: catalog MCP census
