@@ -56,7 +56,8 @@ tags:
 - Healthcare
 - Decentralized Clinical Trials
 - Backend-as-a-Service
-- Agentic AI
+- AI Agents
+- Clinical Research
 tags_raw:
 - Company
 - Human Health
@@ -67,6 +68,7 @@ tags_raw:
 - Decentralized Clinical Trials
 - Backend as a Service
 - Agentic AI
+- Clinical Research
 apis:
 - name: Medable Cortex API
   description: >-
